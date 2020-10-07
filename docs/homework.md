@@ -33,17 +33,17 @@ field 별로 나누어 그 의미를 설명하라(MIPS opcode map 참조)
 
 2. addi $s1, $0, 5 (0x20110005)
 - i format
-- ``
+- `0010 0000 0001 0001 0000 0000 0000 0101`
 - field
-    - op(6bits): 
-    - rs(5bits): 
-    - rt(5bits):  
-    - constant or address(16bits) :
+    - op(6bits): `001000`
+    - rs(5bits): `00000`
+    - rt(5bits):  `10001`
+    - constant or address(16bits) : `0000 0000 0000 0101`
 - 따라서, 
 
 3. add $t0, $0, $0  (0x00004020)
 - r format
-- ``
+- `0000 0000 0000 0000 0100 0000 0010 0000`
 - field
     - op(6bits): 
     - rs(5bits):
@@ -54,7 +54,7 @@ field 별로 나누어 그 의미를 설명하라(MIPS opcode map 참조)
 
 4. add $s2, $0, $0 (0x00009020)
 - r format
-- ``
+- `0000 0000 0000 0000 1001 0000 0010 0000`
 - field
     - op(6bits): 
     - rs(5bits):
@@ -64,11 +64,23 @@ field 별로 나누어 그 의미를 설명하라(MIPS opcode map 참조)
 - 따라서, 
 
 5. slt $t1, $t0, $s1 (0x0111482a)
+- 
+- `0000 0001 0001 0001 0100 1000 0010 1010`
+- field
+
 6. beq $t1, $0, end (0x11200006)
+- 
+- `0001 0001 0010 0000 0000 0000 0000 0110`
+- field
+
 7. lw $t2, 0($s0) (0x8e0a0000)
+- 
+- `1000 1110 0000 1010 0000 0000 0000 0000`
+- field
+
 8. add $s2, $s2, $t2 (0x024a9020)
 - r format
-- ``
+- `0000 0010 0100 1010 1001 0000 0010 0000`
 - field
     - op(6bits): 
     - rs(5bits):
@@ -79,7 +91,7 @@ field 별로 나누어 그 의미를 설명하라(MIPS opcode map 참조)
 
 9. addi $t0, $t0, 1 (0x21080001)
 - i format
-- ``
+- `0010 0001 0000 1000 0000 0000 0000 0001`
 - field
     - op(6bits): 
     - rs(5bits): 
