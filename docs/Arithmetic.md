@@ -4,6 +4,12 @@
 ## MIPS Arithmetic Instructions
 덧셈, 뺄셈, 곱셈, 나눗셈 등의 산술 논리 연산 명령어들
 - add
+    |op|rs|rt|rd|shamt|funct|
+    |--|--|--|--|--|--|
+    |6 bits|5 bits|5 bits|5 bits|5 bits|6 bits|
+    |0|rs|rt|rd|0|0x20|
+    `add rd, rs, rt`
+
 - sub
 - 3 operands: 1destination, 2 sources
     - operand에는 임의의 변수 이름(메모리 주소의 별명)을 쓸 수 없음
