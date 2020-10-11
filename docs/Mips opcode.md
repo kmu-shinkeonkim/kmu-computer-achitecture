@@ -1,0 +1,1 @@
+<img src = "../img/mips_opcode_map.jpg">
