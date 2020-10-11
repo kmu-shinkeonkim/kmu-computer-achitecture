@@ -61,14 +61,26 @@ field 별로 나누어 그 의미를 설명하라(MIPS opcode map 참조)
 - 따라서, 해당 instruction의 의미는 $0 + $0의 결과를 $s2 레지스터에 쓴다는 것이다.
 
 5. slt $t1, $t0, $s1 (0x0111482a)
-- 
+- r format
 - `0000 0001 0001 0001 0100 1000 0010 1010`
 - field
+    - op(6bits): `000000` 이며, r format instruction의 op code는 0x00이다.
+    - rs(5bits): `01000` 이며, instruction에서 $t0을 의미한다.
+    - rt(5bits): `10001` 이며, instruction에서 $s1를 의미한다.
+    - rd(5bits): `01001` 이며, instruction에서 $t1를 의미한다.
+    - shamt(5bits): `00000` 이며, shift 연산을 하지 않음을 의미한다.
+    - funct(6bits): `101010` slt instruction의 function code는 42다.
+- 따라서, 해당 instruction의 의미는 $t0 레지스터에 있는 값이 $s1 레지스터에 있는 값보다 작은 경우, $t1 레지스터에 1를 쓰고 아니라면 0을 쓴다.
 
 6. beq $t1, $0, end (0x11200006)
-- 
+- i format
 - `0001 0001 0010 0000 0000 0000 0000 0110`
 - field
+    - op(6bits): `000100` 이며, beq의 op code는 .
+    - rs(5bits): `01001` 이며, $t1을 의미한다.
+    - rt(5bits): `00000` 이며, $0를 의미한다.
+    - constant or address(16bits) : `0000 0000 0000 0110`이며, target address는 PC + `0000 0000 0000 0110` x 4 이다. 현재 PC의 값은 `0000 0000 0100 0000 0000 0000 0001 0100` 이고, `0000 0000 0000 0110` x 4을 sign extension 한 값과 덧셈을 하면 `0x0040002c` 이므로 target address는 `0x0040002c`이다.
+- 따라서, 해당 instructions의 의미는 $t1에 있는 값이 0이라면 위에서 구한 target address인 `0x0040002c`로 이동한다.
 
 7. lw $t2, 0($s0) (0x8e0a0000)
 - i format
